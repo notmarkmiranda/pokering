@@ -1,24 +1,6 @@
-# README
+# POKERing
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[![Build Status](https://travis-ci.org/notmarkmiranda/pokering.svg?branch=master)](https://travis-ci.org/notmarkmiranda/pokering)
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/notmarkmiranda/pokering.svg?columns=all)](https://waffle.io/notmarkmiranda/pokering)
+[![Coverage Status](https://coveralls.io/repos/github/notmarkmiranda/pokering/badge.svg?branch=master)](https://coveralls.io/github/notmarkmiranda/pokering?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/96b283a09ae37cf7fdef/maintainability)](https://codeclimate.com/github/notmarkmiranda/pokering/maintainability)
