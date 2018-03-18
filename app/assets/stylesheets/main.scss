@@ -1,0 +1,52 @@
+body {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+}
+
+/* Large Screens */
+.main-container {
+  width: 75%;
+  margin-left: 12.5%;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.small-form {
+  width: 500px;
+  padding: 50px;
+}
+
+.small-form-title {
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+.devise-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  & > a {
+    margin: 0px 5px;
+  }
+}
+
+/* Medium Screens */
+@media all and (max-width: 800px) {
+  .main-container {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .small-form {
+    width: 90%;
+  }
+}
+
+/* Small Screens */
+@media all and (max-width: 500px) {
+  .small-form {
+    width: 100%;
+  }
+}
