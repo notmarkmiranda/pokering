@@ -1,0 +1,20 @@
+language: ruby
+rvm:
+- 2.4.0
+env:
+  matrix:
+  - DB=postgresql
+script:
+- RAILS_ENV=test bundle exec rake db:create db:migrate --trace
+- bundle exec rspec
+before_script:
+- cp config/database.travis.yml config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: RHlEg7MF9+fh+7oxU5KV+Yf3Ijer6V3KMMBrf1XCruPyuvHWI4f+y+tgVuR+sCt4Y/FbhhStFdXxnDZSfLVw+zv9H4fhtLIui8W3fmCjAlsxMRsM8xPeyUR1WuNI+4oDRvNNNz8ZqIhRrbCE1vCEkMsI2kWVcgy5HUD0nWA/an3GivLEe5ZzssvpFbNcV+qEd9TPESjktJzGvV1EPtRM+UHTKLN+qh5JJ18BM2IKtovJfcT0inE31+QLv1qyOq/FhAwaWnXfUth94zmF0y6qT/+vo3o5SzmKzs7f7+ub943872Y7qacvCWyktN/KS8DcbR8CXlq6Y/b7ZLJYJeCAuMPSKCU33azVVaRknM4eZ7Eb0rtt7PNftDAFYrCsYiRpxeYIEYurSpjjF1vL+z+eVP1/PqLPUgX9LhsHZEfF8st+QjPVb9oY1/zDDMc4Fb8y/DWlyaqbRTdFdJASJCnPDPCAxmU9IYt+6+sW4lkQx1qMmaCEVVyMh26uocMrYAvB3wQVjMJ6qfCUsxM+F7A1+IqE1qCcs625s8xRMUCounkxhFgp9FBLVXwFVZRljuybIZpgoHX8XBYPhdTXKNzdOMzcOcrSiT5PBnFMt6Twu6O1qPiy5ZjHehnv07F92KFM+HfDfQqglCnZt2LU54bSWwXsX+m8aQU1aqzo+7vpszk=
+  app: thawing-citadel-51355
+  run: "rake db:migrate"
+  on:
+    repo: notmarkmiranda/pokering
