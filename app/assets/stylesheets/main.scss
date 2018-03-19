@@ -2,6 +2,40 @@ body {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
 }
 
+/* navbar start */
+.no-js .top-bar {
+  display: none;
+}
+
+@media screen and (min-width: 40em) {
+  .no-js .top-bar {
+    display: block;
+  }
+
+  .no-js .title-bar {
+    display: none;
+  }
+}
+
+.grid-container {
+  flex-grow: 1;
+}
+
+.site-title {
+  font-weight: 200;
+  text-transform: uppercase;
+	& > span {
+		color: goldenrod;
+	}
+}
+
+.nav-link {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+	letter-spacing: 0.1rem;
+}
+/* navbar end */
+
 /* Large Screens */
 .main-container {
   width: 75%;
@@ -50,3 +84,4 @@ body {
     width: 100%;
   }
 }
+

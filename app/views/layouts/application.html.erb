@@ -23,7 +23,10 @@
       </div>
     <% end %>
 
-    <%= yield %>
+    <%= render partial: 'shared/navbar' %>
+    <div class="main-container">
+      <%= yield %>
+    </div>
 
   </body>
 </html>

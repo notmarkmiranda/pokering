@@ -1,0 +1,33 @@
+<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle="example-menu"></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="example-menu">
+  <div class="grid-container">
+    <div class="grid-x">
+      <div class="top-bar-left">
+        <ul class="menu" >
+          <li class="menu-text site-title">Poker<span>Rank<span></li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+					<% if !current_user %>
+						<li class="nav-link"><%= link_to 'Sign Up', new_user_registration_path %></li>
+						<li class="nav-link"><%= link_to 'Log In', new_user_session_path %></li>
+					<% else %>
+          <li>
+            <a href="#" class="nav-link">One</a>
+            <ul class="menu vertical">
+              <li class="nav-link"><a href="#">One</a></li>
+              <li class="nav-link"><a href="#">Two</a></li>
+              <li class="nav-link"><a href="#">Three</a></li>
+            </ul>
+          </li>
+					<% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
