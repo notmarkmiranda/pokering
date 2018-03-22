@@ -17,6 +17,8 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
+gem 'cancancan', '~> 2.0'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'pry'

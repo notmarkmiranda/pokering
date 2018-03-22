@@ -2,17 +2,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @league.user %>
+  <%= @league.creator %>
 </p>
 
 <p>
   <strong>Name:</strong>
   <%= @league.name %>
-</p>
-
-<p>
-  <strong>Slug:</strong>
-  <%= @league.slug %>
 </p>
 
 <%= link_to 'Edit', edit_league_path(@league) %> |
