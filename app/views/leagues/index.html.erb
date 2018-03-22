@@ -1,0 +1,29 @@
+<div class="card-container">
+  <div class="small-card">
+    <div class="card">
+      <div class="card-divider">
+        <h3 class="league-index-title">Leagues</h3>
+        <%= link_to 'Create New League', new_league_path, class: 'button hollow small' %>
+      </div>
+      <% if @leagues.empty? %>
+        <div class="card-section">
+          There are no leagues. Please <%= link_to 'add one', new_league_path %>.
+        </div>
+      <% else %>
+        <% @leagues.each do |league| %>
+          <div class="card-section league-card-section">
+            <%= link_to league.name, league_path(league) %>
+            <div class="card-actions">
+              <%= link_to edit_league_path(league), class: 'edit-icon' do %>
+                <%= fa_icon 'edit' %>
+              <% end %>
+              <%= button_to league_path(league), { class: 'close-icon', form_class: 'inline-button-to', method: :delete, data: { confirm: 'Are you sure' } } do %>
+                <%= fa_icon 'times' %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
