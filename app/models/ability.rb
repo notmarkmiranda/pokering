@@ -11,8 +11,16 @@ class Ability
       if permission.subject_id.nil?
         can permission.action.to_sym, permission.subject_class.constantize
       else
-        can permission.action.to_sym, permission.subject_class.constantize, :id => permission.subject_id
+        subject_class = permission.subject_class.constantize
+        can permission.action.to_sym, subject_class, :id => permission.subject_id.to_i
+        can :manage, Season, league_id: permission.resource_id if league_manager?(permission, subject_class)
       end
     end
+  end
+
+  private
+
+  def league_manager?(permission, subject_class)
+    subject_class == League && permission.action == 'manage'
   end
 end
