@@ -9,36 +9,11 @@ describe SeasonsController, type: :controller do
     sign_in(admin)
   end
 
-  context 'GET#index' do
-    it 'renders index template' do
-      get :index, params: { league_id: league.id }
-
-      expect(response).to render_template(:index)
-    end
-  end
-
   context 'GET#show' do
-
     it 'renders show template' do
       get :show, params: { league_id: league.id, id: season.id }
 
       expect(response).to render_template :show
-    end
-  end
-
-  context 'GET#new' do
-    it 'renders new template' do
-      get :new, params: { league_id: league.id }
-
-      expect(response).to render_template :new
-    end
-  end
-
-  context 'GET#edit' do
-    it 'renders edit template' do
-      get :edit, params: { league_id: league.id, id: season.id }
-
-      expect(response).to render_template :edit
     end
   end
 
@@ -48,7 +23,7 @@ describe SeasonsController, type: :controller do
     it 'redirects to season path - successful create' do
       post :create, params: { league_id: league.id, season: attrs }
 
-      expect(response).to redirect_to league_season_path(league, Season.last)
+      expect(response).to redirect_to league_path(league)
     end
   end
 

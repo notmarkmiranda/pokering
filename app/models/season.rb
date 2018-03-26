@@ -3,6 +3,8 @@ class Season < ApplicationRecord
 
   validates :league_id, presence: true
 
+  before_save :deactivate_other_seasons
+
 	scope :in_order, -> { order(created_at: :asc) }
 
   def activate_button(context)
@@ -23,5 +25,13 @@ class Season < ApplicationRecord
 
   def completed_title
     completed? ? 'Mark as Incomplete' : 'Mark as Complete'
+  end
+
+  private
+
+  def deactivate_other_seasons
+    if self.active? && (self.active_changed? || self.id.nil?)
+      league.seasons.where.not(id: self).update_all(active: false)
+    end
   end
 end
