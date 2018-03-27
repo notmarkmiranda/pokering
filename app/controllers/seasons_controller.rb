@@ -2,21 +2,12 @@ class SeasonsController < ApplicationController
   load_and_authorize_resource :league
   load_and_authorize_resource :season, through: :league
 
-  def index
-  end
-
   def show
-  end
-
-  def new
-  end
-
-  def edit
   end
 
   def create
     @season.save
-    redirect_to league_season_path(@league, @season)
+    redirect_to league_path(@league)
   end
 
   def update

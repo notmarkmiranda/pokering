@@ -66,9 +66,10 @@ body {
   padding: 50px;
 }
 
-.small-form-title {
+.small-form-title, .league-index-title {
   font-weight: 200;
   text-transform: uppercase;
+  margin: 0;
 }
 
 .devise-links {
@@ -94,7 +95,8 @@ body {
   align-items: center;
 }
 
-.card-header-actions {
+.create-button {
+  margin: 0;
 }
 
 .card-main-section {
