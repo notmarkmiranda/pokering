@@ -4,6 +4,7 @@ describe League, type: :model do
   context 'relationships' do
     it { should belong_to :creator }
     it { should have_many :seasons }
+    it { should have_many :games }
     it { should delegate_method(:creator_permissions).to(:creator).as(:permissions) }
     it { should delegate_method(:creator_full_name).to(:creator).as(:full_name) }
   end
@@ -34,6 +35,18 @@ describe League, type: :model do
             subject
           }.to change(Season, :count).by(1)
         end
+      end
+    end
+
+    context '#active_season' do
+      let(:league) { create(:league) }
+      let(:first_season) { league.seasons.first }
+
+      it 'returns the active season' do
+        active_season = create(:season, league: league)
+
+        expect(league.active_season).to eq(active_season)
+        expect(league.active_season).to_not eq(first_season)
       end
     end
   end

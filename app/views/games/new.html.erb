@@ -1,0 +1,5 @@
+<h1>New Game</h1>
+
+<%= render 'form', game: @game, label_text: 'Schedule New Game', button_text: 'Schedule Game' %>
+
+<%= link_to 'Back', league_season_games_path(@league, @season) %>

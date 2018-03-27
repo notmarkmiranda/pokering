@@ -14,37 +14,15 @@
     <div class="card-section league-card-section">
 
       <div class="small-nested-card">
+        <%= render partial: 'shared/seasons' %>
+      </div>
 
-        <div class="card">
-          <div class="card-divider">
-            <div class="card-main-section">
-              <h4 class="small-form-title">Seasons</h4>
-            </div>
-            <%= button_to 'Create New Season', league_seasons_path(@league), { class: 'button hollow tiny create-button', method: :post, params: { season: { league_id: @league.id } } } %>
-          </div>
-          <% @league.seasons.in_order.each_with_index do |season, index| %>
-          <div class="card-section league-card-section">
-            <div>
-              Season #<%= index + 1 %>
-            </div>
-            <section>
-              <small>
-                <%= season.active_text %>
-                <%= button_to league_season_activate_path(@league, season), { class: 'activate-button', form_class: 'inline-button-to', method: :patch, title: season.active_title } do %>
-                  <%= fa_icon season.activate_button('active') %>
-                <% end %>
-              </small><br />
-              <small>
-                <%= season.completed_text %>
-                <%= button_to league_season_complete_path(@league, season), { class: 'activate-button', form_class: 'inline-button-to', method: :patch, title: season.completed_title } do %>
-                  <%= fa_icon season.activate_button('completed') %>
-                <% end %>
-              </small>
-            </section>
-          </div>
-          <% end %>
-        </div>
+      <div class="small-nested-card">
+        <%= render partial: 'shared/games' %>
+      </div>
 
+      <div class="small-nested-card">
+        <%= render partial: 'shared/seasons' %>
       </div>
 
     </div>

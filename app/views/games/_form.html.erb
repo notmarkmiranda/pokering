@@ -1,0 +1,38 @@
+<div class="form-container">
+  <div class="small-form">
+    <h3 class="small-form-title"><%= label_text %></h3>
+    <%= form_for [@league, @season, @game] do |form| %>
+      <% if game.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+          <ul>
+          <% game.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= form.label :season_id %>
+        <%= form.text_field :season_id, id: :game_season_id %>
+      </div>
+
+      <div class="field date-field">
+        split these cells
+        <%= form.label :date %>
+        <%= form.date_select :date, id: :game_date %>
+      </div>
+
+      <div class="field">
+        <%= form.check_box :completed, id: :game_completed %>
+        <%= form.label :completed %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit button_text, class: 'button hollow small expanded' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

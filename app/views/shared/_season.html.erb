@@ -1,0 +1,21 @@
+<div class="card-section league-card-section">
+  <div>
+    <h6 class="small-form-title">
+      Season #<%= season_counter + 1 %>
+    </h6>
+  </div>
+  <section>
+    <small>
+      <%= season.active_text %>
+      <%= button_to league_season_activate_path(@league, season), { class: 'activate-button', form_class: 'inline-button-to', method: :patch, title: season.active_title } do %>
+        <%= fa_icon season.activate_button('active') %>
+      <% end %>
+    </small><br />
+    <small>
+      <%= season.completed_text %>
+      <%= button_to league_season_complete_path(@league, season), { class: 'activate-button', form_class: 'inline-button-to', method: :patch, title: season.completed_title } do %>
+        <%= fa_icon season.activate_button('completed') %>
+      <% end %>
+    </small>
+  </section>
+</div>

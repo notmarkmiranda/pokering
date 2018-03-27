@@ -1,0 +1,9 @@
+<div class="card">
+  <div class="card-divider">
+    <div class="card-main-section">
+      <h4 class="small-form-title">Seasons</h4>
+    </div>
+    <%= button_to 'Create New Season', league_seasons_path(@league), { class: 'button hollow tiny create-button', method: :post, params: { season: { league_id: @league.id } } } %>
+  </div>
+  <%= render partial: 'shared/season', collection: @league.seasons.in_order %>
+</div>
