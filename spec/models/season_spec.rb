@@ -38,7 +38,12 @@ RSpec.describe Season, type: :model do
     end
 
     context '#number_in_order' do
-      it 'returns the number in the correct order'
+      it 'returns the number in the correct order' do
+        new_season = create(:season, league: season.league)
+
+        expect(season.number_in_order).to eq(2)
+        expect(new_season.number_in_order).to eq(3)
+      end
     end
   end
 end
