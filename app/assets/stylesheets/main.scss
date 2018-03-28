@@ -58,7 +58,7 @@ body {
 }
 
 .small-nested-card {
-  width: 33%;
+  width: 32%;
 }
 
 .medium-card {
@@ -86,6 +86,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .card-divider {
@@ -125,8 +126,21 @@ body {
   cursor: pointer;
 }
 
+.date-field {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#game_date_1i, #game_date_2i, #game_date_3i {
+  width: 32%;
+}
+
 /* Medium Screens */
 @media all and (max-width: 800px) {
+  .card-container {
+    margin-top: 10px;
+  }
+
   .main-container {
     width: 90%;
     margin-left: 5%;
@@ -135,14 +149,29 @@ body {
   .small-form {
     width: 90%;
   }
+
+  .small-nested-card {
+    width: 100%
+  }
 }
 
 /* Small Screens */
 @media all and (max-width: 500px) {
+  .card-container {
+    margin-top: 10px;
+  }
+
   .small-form {
     width: 96%;
     margin-left: 2%;
     margin-right: 2%;
+  }
+
+  .small-nested-card {
+    width: 100%
+  }
+  #game_date_1i, #game_date_2i, #game_date_3i {
+    width: 100%;
   }
 }
 

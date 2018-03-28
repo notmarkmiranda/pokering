@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-divider">
+		<div class="card-main-section">
+			<h4 class="small-form-title">Games</h4>
+		</div>
+    <%= link_to 'Schedule New Game', new_league_season_game_path(@league, @league.active_season), class: 'button hollow tiny create-button' %>
+	</div>
+	<% if @league.games.any? %>
+    <%= render partial: 'shared/game', collection: @league.games.reverse_chronological %>
+	<% else %>
+		<div class="card-section league-card-section">
+      <section>
+        There are no games. Please <%= link_to 'schedule one', new_league_season_game_path(@league, @league.active_season) %>.
+      </section>
+		</div>
+	<% end %>
+</div>

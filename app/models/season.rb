@@ -1,5 +1,6 @@
 class Season < ApplicationRecord
   belongs_to :league
+  has_many :games
 
   validates :league_id, presence: true
 
@@ -26,6 +27,10 @@ class Season < ApplicationRecord
   def completed_title
     completed? ? 'Mark as Incomplete' : 'Mark as Complete'
   end
+
+	def number_in_order
+    (league.seasons.in_order.index(self) + 1).to_i
+	end
 
   private
 

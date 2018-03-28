@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Season, type: :model do
   context 'relationships' do
     it { should belong_to :league }
+    it { should have_many :games }
   end
 
   context 'validations' do
@@ -33,6 +34,15 @@ RSpec.describe Season, type: :model do
         expect(season.active_title).to eq('Mark as Active')
         expect(season.completed_text).to eq('Incomplete')
         expect(season.completed_title).to eq('Mark as Complete')
+      end
+    end
+
+    context '#number_in_order' do
+      it 'returns the number in the correct order' do
+        new_season = create(:season, league: season.league)
+
+        expect(season.number_in_order).to eq(2)
+        expect(new_season.number_in_order).to eq(3)
       end
     end
   end

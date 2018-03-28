@@ -14,6 +14,7 @@ class Ability
         subject_class = permission.subject_class.constantize
         can permission.action.to_sym, subject_class, :id => permission.subject_id.to_i
         can :manage, Season, league_id: permission.resource_id if league_manager?(permission, subject_class)
+        can :manage, Game, season: { league_id: permission.resource_id } if league_manager?(permission, subject_class)
       end
     end
   end
