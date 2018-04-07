@@ -6,6 +6,7 @@ class CreatePlayers < ActiveRecord::Migration[5.1]
       t.integer :finishing_place
       t.float :score
       t.integer :additional_expense, default: 0
+      t.timestamp :finishing_time
 
       t.timestamps null: false
     end

@@ -4,6 +4,7 @@ describe Player, type: :model do
   context 'relationships' do
     it { should belong_to :game }
     it { should belong_to :user }
+    it { should delegate_method(:season).to(:game) }
   end
 
   context 'validations' do

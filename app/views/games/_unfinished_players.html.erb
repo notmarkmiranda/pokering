@@ -1,0 +1,27 @@
+<h3 class="small-form-title">Unfinished Players</h3>
+<% if @game.unfinished_players.empty? %>
+  <p>There are no unfinished players.</p>
+<% else %>
+  <ul class="accordion" data-accordion>
+    <% @game.unfinished_players.each do |player| %>
+    <li class="accordion-item is-active" data-accordion-item>
+      <div class="accordion-content" data-tab-content>
+        <div>
+          <small class="small-form-title"><%= player.user_full_name %></small><br />
+          <small class="muted-text">Rebuys or Add-ons: <%= number_to_currency(player.additional_expense) %></small>
+        </div>
+        <div>
+          <% unless @game.completed? %>
+          <%= button_to league_season_game_player_finish_path(@league, @season, @game, player), { class: 'close-icon', form_class: 'inline-button-to', method: :patch, params: { unfinish: false } } do %>
+            <%= fa_icon player.finishing_time ? 'thumbs-down' : 'check' %>
+          <% end %>
+          <%= button_to league_season_game_player_path(@league, @season, @game, player), { class: 'close-icon', form_class: 'inline-button-to', method: :delete } do %>
+            <%= fa_icon 'times' %>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+<% end %>

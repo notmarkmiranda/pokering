@@ -1,0 +1,12 @@
+<div class="nested-form">
+  <h3 class="small-form-title">New Player</h3>
+  <%= form_for [@league, @season, @game, @player] do |f| %>
+    <%= f.label :user_id, 'Player' %>
+    <%= f.select :user_id, @game.available_users, include_blank: @game.blank_text %>
+    <small><a data-open="exampleModal1">Create a new user</a></small>
+    <%= f.label :additional_expense %>
+    <%= f.number_field :additional_expense %>
+    <%= f.submit 'Just Save', class: 'button hollow small expanded', disabled: @game.completed? %>
+    <%= f.submit 'Save & Finish', class: 'button hollow small expanded', disabled: @game.completed? %>
+  <% end %>
+</div>
