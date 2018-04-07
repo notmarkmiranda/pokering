@@ -1,0 +1,12 @@
+<div class="card-main-section">
+  <h3 class="small-form-title">Game #<%= @game.number_in_order %></h3>
+  <small class="muted-text"><%= @game.formatted_date %></small>
+</div>
+<div class="card-header-actions">
+  <%= button_to league_season_game_game_over_path(@league, @season, @game), { class: 'close-icon', form_class: 'inline-button-to', method: :patch, params: { uncomplete: @game.completed? } } do %>
+    <%= fa_icon @game.completed? ? 'times 2x' : 'table 2x' %>
+  <% end %>
+  <%= link_to edit_league_season_game_path(@league, @season, @game) do %>
+    <%= fa_icon 'edit 2x' %>
+  <% end %>
+</div>

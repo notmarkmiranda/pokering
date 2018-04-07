@@ -1,0 +1,33 @@
+<div class="form-container">
+  <div class="small-form">
+    <h3 class="small-form-title">New player for Game</h3>
+    <%= form_for [@league, @season, @game, @player] do |form| %>
+      <% if player.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(player.errors.count, "error") %> prohibited this player from being saved:</h2>
+
+          <ul>
+          <% player.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :user_id %>
+        <%= form.select :user_id, @game.available_users, include_blank: 'Select a User' %>
+      </div>
+
+      <div class="field">
+        <%= form.label :additional_expense %>
+        <%= form.text_field :additional_expense %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit 'Save Player', class: 'button hollow small expanded' %>
+        <%= form.submit 'Save & Finish Player', class: 'button hollow small expanded' %>
+      </div>
+    <% end %>
+  </div>
+</div>

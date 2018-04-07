@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Game, type: :model do
   context 'relationships' do
     it { should belong_to :season }
+    it { should have_many :players }
     it { should delegate_method(:league).to(:season) }
   end
 

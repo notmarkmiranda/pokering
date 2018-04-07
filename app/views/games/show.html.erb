@@ -1,19 +1,20 @@
-<p id="notice"><%= notice %></p>
+<div class="card-container">
+  <div class="card">
+    <div class="card-divider">
+      <%= render partial: 'game_header' %>
+    </div>
+    <div class="card-section game-card-section">
+      <div class="form-container new-player-form">
+        <%= render partial: 'new_player_form' %>
+      </div>
+      <div class="form-container player-list">
+        <div class="nested-list">
+          <%= render partial: 'finished_players' %>
+          <%= render partial: 'unfinished_players' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Season:</strong>
-  <%= @game.season.id %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @game.date %>
-</p>
-
-<p>
-  <strong>Completed:</strong>
-  <%= @game.completed %>
-</p>
-
-<%= link_to 'Edit', edit_league_season_game_path(@league, @season, @game) %> |
-<%= link_to 'Back', league_season_games_path(@league, @season) %>
+<%= render partial: 'new_user_modal' %>

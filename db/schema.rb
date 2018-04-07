@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180327021428) do
+ActiveRecord::Schema.define(version: 20180405135410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20180327021428) do
     t.boolean "completed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "buy_in", default: 0
     t.index ["season_id"], name: "index_games_on_season_id"
   end
 
@@ -40,6 +41,19 @@ ActiveRecord::Schema.define(version: 20180327021428) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_permissions_on_user_id"
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.bigint "game_id"
+    t.bigint "user_id"
+    t.integer "finishing_place"
+    t.float "score"
+    t.integer "additional_expense", default: 0
+    t.datetime "finishing_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_players_on_game_id"
+    t.index ["user_id"], name: "index_players_on_user_id"
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -73,5 +87,7 @@ ActiveRecord::Schema.define(version: 20180327021428) do
   add_foreign_key "games", "seasons"
   add_foreign_key "leagues", "users"
   add_foreign_key "permissions", "users"
+  add_foreign_key "players", "games"
+  add_foreign_key "players", "users"
   add_foreign_key "seasons", "leagues"
 end

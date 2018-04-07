@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :leagues
   has_many :permissions
+  has_many :players
 
   validates :email, presence: true, uniqueness: true
 
