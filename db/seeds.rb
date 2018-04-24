@@ -27,7 +27,7 @@ j_mortenson   = User.create(email: 'jessemortenson@gmail.com', password: SecureR
 b_nichols     = User.create(email: 'banichols@gmail.com', password: SecureRandom.hex(24), first_name: 'Brent', last_name: 'Nichols')
 b_zanti       = User.create(email: 'brianzanti@gmail.com', password: SecureRandom.hex(24), first_name: 'Brian', last_name: 'Zanti')
 m_milton      = User.create(email: 'matt.milton@gmail.com', password: SecureRandom.hex(24), first_name: 'Matt', last_name: 'Milton')
-h_svishneuski = User.create(email: 'svishneuski@squaretrade.com', password: SecureRandom.hex(24), first_name: 'Matt', last_name: 'Milton')
+h_svishneuski = User.create(email: 'svishneuski@squaretrade.com', password: SecureRandom.hex(24), first_name: 'Henry', last_name: 'Svishneuski')
 
 league = League.create(name: "Mike Cassano's Super Fun League", user_id: m_miranda.id)
 first_season = league.seasons.first
@@ -292,3 +292,13 @@ g_20180315.players.create(user_id: h_svishneuski.id, finishing_time: Time.now)
 g_20180315.players.create(user_id: t_merry.id, finishing_time: Time.now)
 g_20180315.players.create(user_id: k_wheeler.id, finishing_time: Time.now, additional_expense: 15)
 g_20180315.finish_all_players
+
+g_20180418 = third_season.games.create(date: Date.new(2018, 4, 18), completed: true, buy_in: 15)
+g_20180418.players.create(user_id: m_cassano.id, finishing_time: Time.now)
+g_20180418.players.create(user_id: a_schindler.id, finishing_time: Time.now)
+g_20180418.players.create(user_id: h_svishneuski.id, finishing_time: Time.now, additional_expense: 15)
+g_20180418.players.create(user_id: a_baum.id, finishing_time: Time.now)
+g_20180418.players.create(user_id: t_merry.id, finishing_time: Time.now)
+g_20180418.players.create(user_id: k_wheeler.id, finishing_time: Time.now)
+g_20180418.players.create(user_id: j_balu.id, finishing_time: Time.now)
+g_20180418.finish_all_players

@@ -3,6 +3,7 @@ class League < ApplicationRecord
   has_many :permissions, -> { where(subject_class: 'League') }, foreign_key: :subject_id, dependent: :destroy
   has_many :seasons, dependent: :destroy
 	has_many :games, through: :seasons
+  has_many :players, through: :games
 
   delegate :permissions, to: :creator, prefix: true, allow_nil: false
   delegate :full_name, to: :creator, prefix: true, allow_nil: false
@@ -14,6 +15,11 @@ class League < ApplicationRecord
 
   def active_season
     seasons.where(active: true).first
+  end
+
+  def active_season_standings(season=nil)
+    season = season || active_season || Season.last
+    season.players_rankings
   end
 
   private

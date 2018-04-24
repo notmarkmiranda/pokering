@@ -1,6 +1,7 @@
 class Season < ApplicationRecord
   belongs_to :league
   has_many :games
+  has_many :players, through: :games
 
   validates :league_id, presence: true
 
@@ -31,6 +32,14 @@ class Season < ApplicationRecord
 	def number_in_order
     (league.seasons.in_order.index(self) + 1).to_i
 	end
+
+  def players_rankings
+    players.rank_by_score(self)
+  end
+
+  def reverse_order
+    in_order.reverse
+  end
 
   private
 

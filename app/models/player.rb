@@ -30,7 +30,30 @@ class Player < ApplicationRecord
     game.finish_all_players
   end
 
+  def self.rank_by_score(season=nil)
+    @active_season = season || Season.last
+    @season_users = select(:user_id).distinct.pluck(:user_id)
+    return if @season_users.empty?
+
+    find_by_sql(query)
+  end
+
   private
+
+  def self.query
+    "SELECT user_id, SUM(score) AS cumulative_score, COUNT(game_id) \
+     AS games_count FROM (#{subquery}) AS c_players GROUP BY \
+     c_players.user_id ORDER BY cumulative_score DESC"
+  end
+
+  def self.subquery
+    # TODO: (2018-04-26) markmiranda => LIMIT 9 needs to change to a season setting
+    @season_users.map do |user_id|
+      "(SELECT players.* FROM players INNER JOIN games ON \
+       players.game_id = games.id WHERE user_id = #{user_id} AND \
+       games.season_id = #{@active_season.id} ORDER BY score LIMIT 9)"
+    end.join("\nUNION ALL\n")
+  end
 
   def total_expense
     game_buy_in + additional_expense

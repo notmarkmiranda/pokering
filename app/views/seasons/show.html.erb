@@ -1,5 +1,13 @@
-<p id="notice"><%= notice %></p>
-
+<div class="card-container">
+  <div class="card">
+    <div class="card-divider">
+      <div class="card-main-section">
+        <h3 class="small-form-title"><%= "Season ##{@season.number_in_order}" %></h3>
+        <small class="muted-text"><%= @season.active_text %> | <%= @season.completed_text %></small>
+			</div>
+    </div>
+  </div>
+</div>
 <p>
   <strong>League:</strong>
   <%= @season.league.name %>

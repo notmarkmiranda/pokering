@@ -1,0 +1,9 @@
+<div class="card-section league-card-section">
+	<div>
+		<h6 class="small-form-title">
+      <%= "#{(standing_counter + 1).to_i}. #{standing.user.full_name}" %>
+		</h6>
+    <small class="muted-text">Score: <%= standing.cumulative_score %></small>
+    <br /><small class="muted-text">Games Played: <%= standing.games_count %></small>
+	</div>
+</div>
