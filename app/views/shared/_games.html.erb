@@ -8,7 +8,7 @@
     <% end %>
 	</div>
 	<% if @league.games.any? %>
-    <%= render partial: 'shared/game', collection: @league.games.reverse_chronological.first(5) %>
+    <%= render partial: 'shared/game', collection: @league.games.reverse_chronological.first(10) %>
 	<% else %>
 		<div class="card-section league-card-section">
       <section>

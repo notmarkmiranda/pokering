@@ -4,5 +4,6 @@
       <%= link_to "Game ##{game.number_in_order}", league_season_game_path(@league, game.season, game) %> - <%= game.date %>
     </h6>
     <small class="muted-text">Season #<%= game.season.number_in_order %></small>
+    <br /><small class="muted-text">Winner: <%= game.winner_full_name %></small>
 	</div>
 </div>
