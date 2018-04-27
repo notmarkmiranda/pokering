@@ -6,6 +6,7 @@ class LeaguesController < ApplicationController
 
   def show
     @league = League.find(params[:id])
+    @standings = @league.active_season_standings
   end
 
   def new

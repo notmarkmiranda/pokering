@@ -4,6 +4,7 @@ RSpec.describe Season, type: :model do
   context 'relationships' do
     it { should belong_to :league }
     it { should have_many :games }
+    it { should have_many :players }
   end
 
   context 'validations' do
@@ -45,5 +46,14 @@ RSpec.describe Season, type: :model do
         expect(new_season.number_in_order).to eq(3)
       end
     end
+
+    context '#player_rankings' do
+      it 'calls #rank_by_score on Player' do
+        expect(Player).to receive(:rank_by_score).with(season)
+        season.players_rankings
+      end
+    end
+
+    it '#reverse_order'
   end
 end

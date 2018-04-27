@@ -3,7 +3,7 @@
 		<div class="card-main-section">
 			<h4 class="small-form-title">Recent Games</h4>
 		</div>
-    <% if @league.active_season %>
+    <% if @league.active_season && can?(:manage, @league) %>
       <%= link_to 'Schedule New Game', new_league_season_game_path(@league, @league.active_season), class: 'button hollow tiny create-button' %>
     <% end %>
 	</div>

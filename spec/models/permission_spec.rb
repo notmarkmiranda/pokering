@@ -11,5 +11,24 @@ describe Permission, type: :model do
     it { should validate_presence_of :action }
   end
 
-  context 'methods'
+  context 'methods' do
+    let(:league)     { create(:league) }
+    let(:permission) { create(:permission, subject_id: league.id) }
+
+    context '#resource' do
+      subject { permission.resource }
+
+      it 'returns the resource attached to the permission' do
+        expect(subject).to eq(league)
+      end
+    end
+
+    context '#resource_id' do
+      subject { permission.resource_id }
+
+      it 'returns the resource_id to the permission' do
+        expect(subject).to eq(league.id)
+      end
+    end
+  end
 end

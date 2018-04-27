@@ -1,7 +1,7 @@
 <div class="card-section league-card-section">
   <div>
     <h6 class="small-form-title">
-      Season #<%= season_counter + 1 %>
+      <%= link_to "Season ##{season.number_in_order}", league_season_path(@league, season) %>
     </h6>
   </div>
   <section>

@@ -10,7 +10,7 @@ class Game < ApplicationRecord
   scope :chronological, -> { order(date: :asc) }
 
   def available_users
-    users = User.joins(:permissions).where(permissions: { subject_class: 'League', subject_id: league.id }) - players.map(&:user)
+    users = User.joins(:permissions).where(permissions: { subject_class: 'League', subject_id: league.id }).sort_by(&:full_name) - players.map(&:user)
     users.collect { |user| [user.full_name, user.id] }
   end
 
