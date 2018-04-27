@@ -145,5 +145,26 @@ describe Game, type: :model do
         expect(subject).to_not include(player_2)
       end
     end
+
+    context '#winner_full_name' do
+      subject { game.winner_full_name }
+
+      it 'returns the first place users full name' do
+        player = create(:player, finishing_place: 1, game: game)
+
+        expect(subject).to eq(player.user.full_name)
+      end
+
+      it 'returns the highest placed users full name' do
+        player = create(:player, finishing_place: 9, game: game)
+
+        expect(subject).to eq(player.user.full_name)
+      end
+
+      it 'returns nil' do
+        expect(subject).to be nil
+      end
+    end
+
   end
 end

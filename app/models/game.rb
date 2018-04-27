@@ -49,4 +49,14 @@ class Game < ApplicationRecord
   def unfinished_players
     players.where(finishing_time: nil).where.not(id: nil)
   end
+
+  def winner_full_name
+    winner&.full_name
+  end
+
+  private
+
+  def winner
+    players.min_by(&:finishing_place)&.user
+  end
 end
