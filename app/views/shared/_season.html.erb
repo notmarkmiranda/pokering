@@ -3,6 +3,8 @@
     <h6 class="small-form-title">
       <%= link_to "Season ##{season.number_in_order}", league_season_path(@league, season) %>
     </h6>
+    <small class="muted-text"># of Games: <%= season.games_count %></small>
+    <br /><small class="muted-text">Season Leader: <%= season.winner_full_name %></small>
   </div>
   <section>
     <small>
