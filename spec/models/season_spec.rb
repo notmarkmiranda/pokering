@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Season, type: :model do
+describe Season, type: :model do
   context 'relationships' do
     it { should belong_to :league }
     it { should have_many :games }
@@ -38,6 +38,27 @@ RSpec.describe Season, type: :model do
       end
     end
 
+    context '#games_count' do
+      subject { season.games_count }
+
+      it 'returns 0 for number of games' do
+        expect(subject).to eq(0)
+      end
+
+      it 'returns 1 for number of games' do
+        create(:game, season: season)
+
+        expect(subject).to eq(1)
+      end
+
+      it 'returns 2 for number of games' do
+        create_list(:game, 2, season: season)
+
+        expect(subject).to eq(2)
+      end
+    end
+
+
     context '#number_in_order' do
       it 'returns the number in the correct order' do
         new_season = create(:season, league: season.league)
@@ -47,13 +68,34 @@ RSpec.describe Season, type: :model do
       end
     end
 
-    context '#player_rankings' do
+    context '#players_rankings' do
+      subject { season.players_rankings }
+
+      it 'returns nil with no players' do
+        expect(subject).to be nil
+      end
+
       it 'calls #rank_by_score on Player' do
+        game = create(:game, season: season)
+        create(:player, game: game)
+
         expect(Player).to receive(:rank_by_score).with(season)
-        season.players_rankings
+        subject
       end
     end
 
     it '#reverse_order'
+
+    context '#winner_full_name' do
+      subject { season.winner_full_name }
+
+      it 'returns nil' do
+        expect(subject).to be nil
+      end
+
+      it 'returns the winners full name' do
+
+      end
+    end
   end
 end

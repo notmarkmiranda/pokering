@@ -29,16 +29,25 @@ class Season < ApplicationRecord
     completed? ? 'Mark as Incomplete' : 'Mark as Complete'
   end
 
+  def games_count
+    games.count
+  end
+
 	def number_in_order
     (league.seasons.in_order.index(self) + 1).to_i
 	end
 
   def players_rankings
+    return if players.empty?
     players.rank_by_score(self)
   end
 
   def reverse_order
     in_order.reverse
+  end
+
+  def winner_full_name
+    winner&.full_name
   end
 
   private
@@ -47,5 +56,10 @@ class Season < ApplicationRecord
     if self.active? && (self.active_changed? || self.id.nil?)
       league.seasons.where.not(id: self).update_all(active: false)
     end
+  end
+
+  def winner
+    return if players_rankings.nil?
+    players_rankings.first&.user
   end
 end
